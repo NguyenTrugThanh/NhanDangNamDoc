@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>🍄 Phân loại Nấm</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="card">
+    <h1>🍄 Phân loại Nấm</h1>
+    <form method="POST" class="form-inline">
+
+        <div class="form-row">
+            <label>Hình dạng mũ:</label>
+            <select name="cap-shape">
+                <option value="b" {% if form_data.get('cap-shape') == 'b' %}selected{% endif %}>Hình chuông</option>
+                <option value="c" {% if form_data.get('cap-shape') == 'c' %}selected{% endif %}>Hình nón</option>
+                <option value="x" {% if form_data.get('cap-shape') == 'x' %}selected{% endif %}>Lồi</option>
+                <option value="f" {% if form_data.get('cap-shape') == 'f' %}selected{% endif %}>Phẳng</option>
+                <option value="k" {% if form_data.get('cap-shape') == 'k' %}selected{% endif %}>Có núm</option>
+                <option value="s" {% if form_data.get('cap-shape') == 's' %}selected{% endif %}>Lõm xuống</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label>Màu mũ:</label>
+            <select name="cap-color">
+                <option value="n" {% if form_data.get('cap-color') == 'n' %}selected{% endif %}>Nâu</option>
+                <option value="y" {% if form_data.get('cap-color') == 'y' %}selected{% endif %}>Vàng</option>
+                <option value="w" {% if form_data.get('cap-color') == 'w' %}selected{% endif %}>Trắng</option>
+                <option value="g" {% if form_data.get('cap-color') == 'g' %}selected{% endif %}>Xám</option>
+                <option value="e" {% if form_data.get('cap-color') == 'e' %}selected{% endif %}>Đỏ</option>
+                <option value="p" {% if form_data.get('cap-color') == 'p' %}selected{% endif %}>Hồng</option>
+                <option value="u" {% if form_data.get('cap-color') == 'u' %}selected{% endif %}>Tím</option>
+                <option value="b" {% if form_data.get('cap-color') == 'b' %}selected{% endif %}>Be</option>
+                <option value="c" {% if form_data.get('cap-color') == 'c' %}selected{% endif %}>Quế</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label>Mùi:</label>
+            <select name="odor">
+                <option value="a" {% if form_data.get('odor') == 'a' %}selected{% endif %}>Hạnh nhân</option>
+                <option value="l" {% if form_data.get('odor') == 'l' %}selected{% endif %}>Hồi</option>
+                <option value="c" {% if form_data.get('odor') == 'c' %}selected{% endif %}>Nhựa gỗ</option>
+                <option value="y" {% if form_data.get('odor') == 'y' %}selected{% endif %}>Cá</option>
+                <option value="f" {% if form_data.get('odor') == 'f' %}selected{% endif %}>Hôi</option>
+                <option value="m" {% if form_data.get('odor') == 'm' %}selected{% endif %}>Mốc</option>
+                <option value="n" {% if form_data.get('odor') == 'n' %}selected{% endif %}>Không mùi</option>
+                <option value="p" {% if form_data.get('odor') == 'p' %}selected{% endif %}>Cay</option>
+                <option value="s" {% if form_data.get('odor') == 's' %}selected{% endif %}>Cay nồng</option>
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit">🔍 Dự đoán</button>
+        </div>
+    </form>
+
+    {% if prediction %}
+        <div class="result {{ pred_class }}">{{ prediction }}</div>
+    {% endif %}
+</div>
+</body>
+</html>
